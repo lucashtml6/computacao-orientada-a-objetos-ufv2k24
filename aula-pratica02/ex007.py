@@ -1,17 +1,44 @@
-qtdLinhas = int(input('Digite a quantidade de linhas da matriz: '))
-qtdColunas = int(input('Digite a quantidade de colunas da matriz: '))
+# Funções
+def criaMatriz(linhas, colunas):
+  matriz = []
 
-# pegar o numero inteiro
-n = int(input('Digite o número que quer analisar: '))
+  for i in range(linhas):
+    linha = []
+    for j in range(colunas): # Adiciona os elementos na linha,
+      elem = int(input(f'Digite o elemento da pos[{i+1}][{j+1}]: '))
+      linha.append(elem) 
 
-elem = 0
-matriz = []
+    matriz.append(linha) # Adiciona a linha na matriz
+  
+  return matriz
 
-# fazer for para ler os elementos da matriz (2 for) (pesquisar matrizes em python)
-for c in range(qtdLinhas):
-  for i in range(qtdColunas):
-    
+def imprimir_matriz(matriz):
+  for linha in matriz:
+    for elemento in linha:
+      print(elemento, end=" ")
+    print()
 
-# fazer dois for para ir percorrendo a matriz
-  # em cada posicao da lista, comparar se os numeros sao iguais
-  # pos[c] == num => count++
+def contaQtdAparicoesNum(matriz, num):
+  cont = 0
+  for i in range(linhas):
+    for j in range(colunas):
+      if matriz[i][j] == num:
+        cont += 1
+  return cont
+
+# Interação com o usuário
+linhas = int(input('Digite a quantidade de linhas da matriz: '))
+colunas = int(input('Digite a quantidade de colunas da matriz: '))
+
+num = int(input('Digite o número a ser analisado: '))
+print('\n')
+
+# Cria a matriz
+matriz = criaMatriz(linhas, colunas)
+
+# Imprime a matriz
+print('\nA matriz é: \n')
+imprimir_matriz(matriz)
+
+# Conta quanta vezes o num apareceu 
+print(f'\nO número {num} apareceu {contaQtdAparicoesNum(matriz, num)} vezes na matriz.')
